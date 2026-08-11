@@ -100,9 +100,9 @@ strfree(string_t string)
 }
 
 char *
-strbool(boolean_t bool)
+strbool(boolean_t b)
 {
-  if (bool)
+  if (b)
     return "TRUE";
   else
     return "FALSE";
