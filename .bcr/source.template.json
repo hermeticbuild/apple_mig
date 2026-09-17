@@ -1,0 +1,5 @@
+{
+  "integrity": "",
+  "strip_prefix": "apple_mig-{VERSION}",
+  "url": "https://github.com/hermeticbuild/apple_mig/releases/download/{TAG}/apple_mig-{VERSION}.tar.gz"
+}

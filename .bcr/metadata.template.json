@@ -1,0 +1,16 @@
+{
+  "homepage": "https://github.com/hermeticbuild/apple_mig",
+  "maintainers": [
+    {
+      "name": "Corentin Kerisit",
+      "email": "corentin.kerisit@gmail.com",
+      "github": "cerisier",
+      "github_user_id": 1126594
+    }
+  ],
+  "repository": [
+    "github:hermeticbuild/apple_mig"
+  ],
+  "versions": [],
+  "yanked_versions": {}
+}
