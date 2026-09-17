@@ -30,9 +30,8 @@ servers of the Mach RPC interface described.
 ## Getting and building the source
 
 ```
-% git clone --branch=cross_platform \
-    https://github.com/markmentovai/bootstrap_cmds
-% cd bootstrap_cmds
+% git clone https://github.com/hermeticbuild/apple_mig
+% cd apple_mig
 % autoreconf --install
 % sh configure
 % make
@@ -73,16 +72,27 @@ fact must not be used as they will be rejected by the compiler.)
 This will normally produce `mach_exc.h`, `mach_excServer.c`, and
 `mach_excUser.c`.
 
+## Bazel module
+
+The repository is a build-complete `apple_mig` Bazel module. Its version follows
+the Apple `bootstrap_cmds` source version: module `138.0.0` is based on
+`bootstrap_cmds-138` and cross-platform commit
+`f337e600741638896fb6056ce87c6479f74b89a3`.
+
+The parser and lexer are checked in so consumers do not build Bison and Flex.
+They reproduce byte-for-byte with Apple Bison 2.3 and Apple Flex 2.6.4
+(`flex-35`). Run `tools/regenerate_parser.sh` to verify them, or pass `--write`
+to update them deliberately.
+
 ## Changes from upstream
 
 Upstream `mig` is available from [Apple Open
 Source](https://opensource.apple.com/) in the `bootstrap_cmds` project, present
-in many macOS and Developer Tools releases. [This
-repository](https://github.com/markmentovai) contains full unaltered history on
-the [main](https://github.com/markmentovai/bootstrap_cmds/tree/main) branch, on
-which this
-[cross\_platform](https://github.com/markmentovai/bootstrap_cmds/tree/cross_platform)
-branch is based.
+in many macOS and Developer Tools releases. The cross-platform port was
+originally developed in
+[`markmentovai/bootstrap_cmds`](https://github.com/markmentovai/bootstrap_cmds),
+which preserves Apple history and supplies the non-Apple compatibility layer.
+This repository packages that port as the `apple_mig` Bazel module.
 
 These major changes are present:
 
