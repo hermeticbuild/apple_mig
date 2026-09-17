@@ -20,6 +20,7 @@
 /mig.xcodeproj/xcuserdata/
 /migcom.tproj/migcom
 /MODULE.bazel.lock
+/.bazelrc.user
 Makefile
 Makefile.in
 tags

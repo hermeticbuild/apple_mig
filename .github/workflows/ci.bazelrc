@@ -1,0 +1,5 @@
+common --config=ci
+common --config=remote
+common --repository_cache=~/.cache/bazel-repo
+common --repo_contents_cache=~/.cache/bazel-repo/contents
+common --remote_download_outputs=minimal
