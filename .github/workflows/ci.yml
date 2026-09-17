@@ -52,17 +52,17 @@ jobs:
             exit 1
           fi
 
-          bazel_flags=(
-            --bazelrc="${GITHUB_WORKSPACE}/.github/workflows/ci.bazelrc"
-            "--remote_header=x-buildbuddy-api-key=${BUILDBUDDY_API_KEY}"
-          )
+          bazelrc="${GITHUB_WORKSPACE}/.github/workflows/ci.bazelrc"
+          remote_header="--remote_header=x-buildbuddy-api-key=${BUILDBUDDY_API_KEY}"
 
-          bazel "${bazel_flags[@]}" build \
+          bazel --bazelrc="${bazelrc}" build \
+            "${remote_header}" \
             "--platforms=${TARGET_PLATFORM}" \
             //:mig \
             //:migcom
 
-          migcom_path="$(bazel "${bazel_flags[@]}" cquery \
+          migcom_path="$(bazel --bazelrc="${bazelrc}" cquery \
+            "${remote_header}" \
             "--platforms=${TARGET_PLATFORM}" \
             --output=files \
             //:migcom)"
