@@ -1,6 +1,6 @@
 module(
     name = "apple_mig",
-    version = "138.0.0",
+    version = "138.0.1",
     bazel_compatibility = [">=8.4.2"],
 )
 
