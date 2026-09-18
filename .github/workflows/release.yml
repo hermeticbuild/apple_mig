@@ -18,10 +18,12 @@ permissions:
 
 jobs:
   release:
-    uses: bazel-contrib/.github/.github/workflows/release_ruleset.yaml@1d798ff015ed0696433e01e2c3ccbb2abefadad7 # v7.7.0
+    # BCR's SLSA verifier requires a typed workflow ref in the signer identity;
+    # a raw commit SHA is rejected even when it resolves to this release tag.
+    uses: bazel-contrib/.github/.github/workflows/release_ruleset.yaml@v7.7.0
     with:
       bazel_test_command: bazel build //:mig //:migcom
-      draft: true
+      draft: ${{ github.event_name == 'push' }}
       prerelease: false
       release_files: apple_mig-*.tar.gz
       tag_name: ${{ inputs.tag_name || github.ref_name }}

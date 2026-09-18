@@ -34,7 +34,9 @@ on:
 
 jobs:
   publish:
-    uses: bazel-contrib/publish-to-bcr/.github/workflows/publish.yaml@ca23149e55cd4db07a6bcce69c02dea314c5a357 # v1.5.0
+    # Keep the tag in the attestation signer identity. slsa-verifier does not
+    # accept a reusable workflow invoked through an untyped raw commit SHA.
+    uses: bazel-contrib/publish-to-bcr/.github/workflows/publish.yaml@v1.5.0
     with:
       attest: ${{ inputs.attest }}
       draft: false
